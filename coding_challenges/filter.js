@@ -5,10 +5,10 @@ const a = [1,2,3,4,5,7,8,12,13,16];
 //Arrays.filter
 //filter - returns a new array with all the elements that pass the
 //test from the provided function.  value is the element at a[i].
-Array.prototype.filter = function(func){
-    var newArray = [];
+Array.prototype.filter = function(callback){
+    const newArray = [];
     this.forEach(function(value,index){
-        if(func(value,index)){
+        if(callback(value,index)){
             newArray.push(value);
         }
     });
