@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Index</title>
+    <link rel="stylesheet" type="text/css" href="../styles/styles.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+</head>
+<body>
+    <div id='container'>
+        <form action='/results' method='post'>
+            <p>Your Name:</p>
+            <input class="textbox" type="text" name="name">
+            <p>Dojo Location:</p>
+            <select class="dropdown" name="location">
+                <option></option>
+                <option>Seattle</option>
+                <option>Milwaukee</option>
+                <option>New York</option>
+            </select>
+            <p>Favorite Language:</p>
+            <select class="dropdown" name="language">
+                <option></option>
+                <option>Javascript</option>
+                <option>CSS</option>
+                <option>Node</option>
+                <option>React</option>
+            </select>
+            <p>Comment (optional):</p>
+            <textarea rows="4" cols="48" name="comment"></textarea>
+            <input type="submit" value="Submit">
+        </form>
+    </div>
+</body>
+</html>
