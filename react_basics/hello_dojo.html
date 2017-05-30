@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Hello Dojo</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width">
+        <script type="text/javascript" src="node_modules/react/dist/react.js"></script>
+        <script type="text/javascript" src="node_modules/react-dom/dist/react-dom.js"></script>
+    </head>
+    <body>
+        <div id='react'></div>
+        
+        <script type="text/javascript">
+            'use strict'
+            var reactContainer = document.getElementById('react');
+            
+            ReactDOM.render(
+                React.createElement(
+                    'div',null,
+                    React.createElement('h1',null,'Hello Dojo!'),
+                    React.createElement('h3',null,'Things I need to do:'),
+                    React.createElement('ul',null,
+                        React.createElement('li',null,'Learn React'),
+                        React.createElement('li',null,'Climb Mt. Everest'),
+                        React.createElement('li',null,'Run a marathon'),
+                        React.createElement('li',null,'Feed the dogs')
+                        )
+                    ),
+                reactContainer
+            );
+
+        </script>
+
+    </body>
+</html>
