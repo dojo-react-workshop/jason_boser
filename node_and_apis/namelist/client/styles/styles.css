@@ -1,0 +1,29 @@
+.delete_name{
+    width: 20px;
+    height: 20px;
+    line-height: 60px;
+    margin: 18px 0px 2px 0px;
+    display: inline-block;
+    vertical-align: center;
+}
+p{
+    height: 20px;
+    margin: 20px 0px 0px 0px;
+    display: inline-block;
+    vertical-align: top;
+}
+#namelist div {
+    margin: 0px;
+    padding: 0px;
+}
+input{
+    margin-top:20px;
+}
+.update_name{
+    width: 18px;
+    height: 18px;
+    line-height: 60px;
+    margin: 21px 0px 0px -25px;
+    display: inline-block;
+    vertical-align: top;
+}
