@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Voting App</title>
+            <meta charset="UTF-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1">
+            <link rel="stylesheet" type="text/css" href="./styles/styles.css">
+            <script src="node_modules/react/dist/react.js"></script>
+            <script src="node_modules/react-dom/dist/react-dom.js"></script>
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.34/browser.min.js"></script>
+    </head>
+    <body>
+        <div id='app'>
+            
+        </div>
+
+        <script type='text/babel'>
+            'use strict'
+
+            const options = ['React','Vue','Angular','Ember']
+
+            const Container = (props) => {
+                const {options} = props;
+
+                const header = <Header text="Vote Your JS Library!" />
+                const selectionBox = <SelectionBox options={options} />
+
+                return (
+                    <div id='container'>
+                        {header}
+                        {selectionBox}
+                    </div>
+                )
+            }
+
+            const Header = (props) => {
+                return (
+                    <h1>{props.text}</h1>
+                )
+            }
+
+            const SelectionBox = (props) => {
+                const selections = props.options.map((selection, index) => {
+                    return <Selection key={index} text={selection} />
+                })
+                return (
+                    <div id='selection-box'>
+                        {selections}
+                    </div>
+                )
+            }
+
+            const Selection = (props) => {
+                const optionParts = [];
+                optionParts.push(<p key='counter' className='counter'>0</p>);
+                optionParts.push(<p key='label' className='label'>{props.text}</p>);
+                optionParts.push(<img key='incrementer' src='./images/plus.png' alt='plus sign'></img>);
+
+                return (
+                    <div className='selection'>
+                        {optionParts}
+                    </div>
+                )
+            }
+
+            ReactDOM.render(
+                <Container options={options}/>,
+                document.getElementById('app')
+            )
+        </script>
+    </body>
+</html>

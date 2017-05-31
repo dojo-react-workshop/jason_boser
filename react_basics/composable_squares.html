@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Composable Squares</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width">
+        <script type="text/javascript" src="node_modules/react/dist/react.js"></script>
+        <script type="text/javascript" src="node_modules/react-dom/dist/react-dom.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.34/browser.min.js"></script>
+        <style type="text/css">
+            p {
+                width: 200px;
+                height: 200px;
+                font-size: 28px;
+                font-weight: bold;
+                margin: 0px;
+                display: inline-block;
+                vertical-align: top;
+            }
+        </style>
+    </head>
+    <body>
+        <div id='react'></div>
+        
+        <script type="text/javascript">
+            'use strict'
+            const container = document.getElementById('react');
+            
+            const Row = (props) => {
+                //create an array of squares
+                const squares = props.colors.map((value,index) => {
+                    return React.createElement(
+                        Square,
+                        {
+                            background:value.background, 
+                            fontColor:value.fontColor, 
+                            key:index
+                        }
+                    );
+                })
+
+                return React.createElement('div',null,squares);
+            }
+
+            const Square = (props) => {
+                return React.createElement(
+                    'p',
+                    {
+                        key: props.index,
+                        style: {backgroundColor:props.background, color:props.fontColor}
+                    },
+                    `${props.fontColor} on ${props.background}`);
+            }
+            
+            ReactDOM.render(
+                React.createElement('div',null,
+                    React.createElement(Row,
+                        {
+                            colors: [
+                                {background:'blue',fontColor:'white'},
+                                {background:'red',fontColor:'blue'},
+                                {background:'pink',fontColor:'green'}]
+                        }
+                    ),
+                    React.createElement(Row,
+                        {
+                            colors: [
+                                {background:'purple',fontColor:'gold'},
+                                {background:'green',fontColor:'red'},
+                                {background:'black',fontColor:'white'},
+                                {background:'gray',fontColor:'orange'}]
+                        }
+                    )
+                ),
+                container
+            );
+
+        </script>
+
+    </body>
+</html>
