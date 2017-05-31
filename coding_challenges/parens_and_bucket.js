@@ -17,13 +17,6 @@ function validParens (str) {
 
 //array of integers indicating terrace heights [3,1,5,6,4,2,3]
 //how much water can be contained? (c)
-//solution 1: create a grid of 0 (block) and 1 open, count the 'contained' 1's
-//solution 2: find the max and iterate on each side of it
-//      a. is the current less than left bound
-//          1) yes => add L-C to the volume
-//          2) no => move the left bound
-//      b. repeat for the right side
-
 //        *
 //    *   *
 //    *   * *
@@ -31,3 +24,37 @@ function validParens (str) {
 //* c * * * * * *
 //* * * * * * * *
 //L C     M     R
+
+function terraceHeights(arr){
+    let left = 0;
+    let right = arr.length-1;
+    let volume = 0;
+    let max = 0;
+
+    for(let i=1; i<arr.length; i++){
+        if(arr[i] > arr[max]) max = i;
+    }
+
+    for(let curr=1; curr<max; curr++){
+        if(arr[curr] < arr[left]){
+            volume += (arr[left]-arr[curr]);
+        }else{
+            left=curr;
+        }
+    }
+
+    for(let curr=arr.length-2; curr>max; curr--){
+        if(arr[curr] < arr[right]){
+            volume += (arr[right]-arr[curr]);
+        }else{
+            right=curr;
+        }
+    }
+
+    return volume;
+}
+
+console.log(terraceHeights([3,1,5,6,4,2,3]));
+console.log(terraceHeights([3,1,5,2,6,4,2,3]));
+console.log(terraceHeights([6,5,4,3,2,1,2,3,4,5,6]));
+console.log(terraceHeights([1,2,3,4,5,6,5,4,3,2,1]));

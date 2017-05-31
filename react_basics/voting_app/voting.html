@@ -17,30 +17,21 @@
         <script type='text/babel'>
             'use strict'
 
-            const options = ['React','Vue','Angular','Ember']
+            const languages = ['React','Vue','Angular','Ember']
 
             const Container = (props) => {
-                const {options} = props;
-
-                const header = <Header text="Vote Your JS Library!" />
-                const selectionBox = <SelectionBox options={options} />
-
+                const {languages} = props;
+            
                 return (
                     <div id='container'>
-                        {header}
-                        {selectionBox}
+                        <h1>Vote Your JS Library!</h1>
+                        <SelectionBox languages={languages} />
                     </div>
                 )
             }
 
-            const Header = (props) => {
-                return (
-                    <h1>{props.text}</h1>
-                )
-            }
-
             const SelectionBox = (props) => {
-                const selections = props.options.map((selection, index) => {
+                const selections = props.languages.map((selection, index) => {
                     return <Selection key={index} text={selection} />
                 })
                 return (
@@ -51,20 +42,17 @@
             }
 
             const Selection = (props) => {
-                const optionParts = [];
-                optionParts.push(<p key='counter' className='counter'>0</p>);
-                optionParts.push(<p key='label' className='label'>{props.text}</p>);
-                optionParts.push(<img key='incrementer' src='./images/plus.png' alt='plus sign'></img>);
-
                 return (
                     <div className='selection'>
-                        {optionParts}
+                        <p className='counter'>0</p>
+                        <p className='label'>{props.text}</p>
+                        <img src='./images/plus.png' alt='plus sign'></img>
                     </div>
                 )
             }
 
             ReactDOM.render(
-                <Container options={options}/>,
+                <Container languages={languages}/>,
                 document.getElementById('app')
             )
         </script>
