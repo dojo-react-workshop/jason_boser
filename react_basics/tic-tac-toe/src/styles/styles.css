@@ -1,0 +1,26 @@
+*{
+    //outline: 1px solid red;
+}
+
+#game {
+
+}
+
+#board {
+    width: 312px;
+    height: 312px;
+    padding: 2px;
+    background-color: black;
+}
+
+.square {
+    width: 100px;
+    height: 100px;
+    margin: 2px;
+    font-size: 100px;
+    text-align: center;
+    line-height: 100px;
+    display: inline-block;
+    vertical-align: top;
+    background-color: white;
+}
