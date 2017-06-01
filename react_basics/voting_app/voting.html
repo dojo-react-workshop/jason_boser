@@ -42,11 +42,15 @@
             }
 
             const Selection = (props) => {
+                const handleClick = () => {
+                    alert('You clicked me');
+                }
+
                 return (
                     <div className='selection'>
                         <p className='counter'>0</p>
                         <p className='label'>{props.text}</p>
-                        <img src='./images/plus.png' alt='plus sign'></img>
+                        <img src='./images/plus.png' alt='plus sign' onClick={handleClick}></img>
                     </div>
                 )
             }

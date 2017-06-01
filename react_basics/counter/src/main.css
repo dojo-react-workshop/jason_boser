@@ -1,0 +1,21 @@
+*{
+    margin: 0px auto;
+    padding: 0px;
+}
+
+#container {
+    width: 400px;
+    height: 800px;
+    text-align: center;
+}
+
+.counter {
+    width: 200px;
+    height: 80px;
+    margin-bottom: 10px;
+    border: 2px solid black;
+}
+
+button {
+    margin: 10px;
+}

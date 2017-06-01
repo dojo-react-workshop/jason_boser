@@ -1,0 +1,44 @@
+#container {
+    width: 500px;
+    height: 800px;
+    margin: auto auto;
+    text-align: center;
+}
+
+#library-box{
+    width: 250px;
+    margin-left: 125px;
+}
+
+.library {
+    width: 250px;
+    height: 50px;
+    border: 1px solid black;
+}
+
+.library * {
+    font-size: 28px;
+    line-height: 50px;
+    display: inline-block;
+    vertical-align: top;
+}
+
+.counter {
+    width: 38px;
+    line-height: 38px;
+    margin: 5px;
+    border: 1px solid black;
+    border-radius: 20px;
+}
+
+.label {
+    width: 150px;
+    line-height: 50px;
+    margin-top: 0px;
+}
+
+img {
+    width: 30px;
+    height: 30px;
+    margin: 10px 5px 0px 10px;
+}
