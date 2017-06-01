@@ -14,82 +14,125 @@ const products = [
 ];
 
 class FilterableProductTable extends React.Component {
+    constructor(){
+        super();
+
+        this.state ={
+            searchText:"",
+            inStockFilter:false
+        }
+    }
+
+    updateSearchText = (text) => {
+        console.log('updating search text to ' + text);
+        this.setState({
+            searchText:text
+        })
+    }
+
+    updateInStockFilter = (filter) => {
+        console.log('updating filter to ' + filter);
+        this.setState({
+            inStockFilter:filter
+        })
+    }
+
     render(){
+        let products = this.props.products.filter((current) => {
+            if(current.name.toUpperCase().startsWith(this.state.searchText.toUpperCase())){
+                //search text matches
+                if(this.state.inStockFilter){
+                    //display only if in stock
+                    return current.stocked;
+                }else{
+                    //display everything
+                    return true;
+                }
+            }else{
+                //search text didn't match, don't display
+                return false;
+            }
+        })
+
         return (
             <div id='container'>
-                <SearchBar />
-                <ProductTable products={this.props.products}/>
+                <SearchBar 
+                    updateSearchText={this.updateSearchText}
+                    updateInStockFilter={this.updateInStockFilter}
+                />
+                <ProductTable products={products}/>
             </div>
         )
     }
 }
 
-class SearchBar extends React.Component {
-    render(){
-        return (
-            <div id='search-bar'>
-                <input type='text' placeholder='Search...' />
-                <br />
-                <input type='checkbox' />
-                <label>Only show products in stock</label>
-            </div>
-        )
-    }
+const SearchBar = (props) => {
+
+    return (
+        <div id='search-bar'>
+            <input type='text' 
+                placeholder='Search...' 
+                onChange={(input) => props.updateSearchText(input.target.value)}
+            />
+            <br />
+            <input type='checkbox' 
+                onChange={(input) => props.updateInStockFilter(input.target.checked)}
+            />
+            <label>Only show products in stock</label>
+        </div>
+    )
 }
 
-class ProductTable extends React.Component {
-    constructor(props){
-        super(props);
-    }
+const ProductTable = (props) => {
 
+    let currentCategory = "";
+    let outputRows = [];
 
-    render(){
-        let currentCategory = "";
-        let outputRows = [];
+    for(let i=0; i<props.products.length; i++){
+        let product = props.products[i];
 
-        for(let i=0; i<this.props.products.length; i++){
-            let product = this.props.products[i];
-            console.log(product);
-
-            if(product.category != currentCategory){
-                currentCategory = product.category;
-                outputRows.push(
-                    <ProductCategoryRow category_name={product.category}/>
-                );
-            }
-
+        if(product.category != currentCategory){
+            currentCategory = product.category;
             outputRows.push(
-                <ProductRow 
-                    className={product.stocked? 'in-stock' : 'out-of-stock'}
-                    product={product.name} 
-                    price={product.price}
+                <ProductCategoryRow 
+                    key={Math.random()*10000}
+                    category_name={product.category}
                 />
             );
         }
 
-        return (
-            <div id='product-table'>
-                <h3>Name &nbsp;&nbsp;&nbsp; Price</h3>
-                {outputRows}
-            </div>
-        )
+        outputRows.push(
+            <ProductRow 
+                key={Math.random()*10000}
+                className={product.stocked? 'in-stock' : 'out-of-stock'}
+                product={product.name} 
+                price={product.price}
+            />
+        );
     }
+
+    return (
+        <div id='product-table'>
+            <h3>Name</h3>
+            <h3>Price</h3>
+            {outputRows}
+        </div>
+    )
 }
 
-class ProductCategoryRow extends React.Component {
-    render(){
-        return (
-            <h3>{this.props.category_name}</h3>
-        )
-    }
+const ProductCategoryRow = (props) => {
+    return (
+        <h4>{props.category_name}</h4>
+    )
 }
 
-class ProductRow extends React.Component {
-    render(){
-        return (
-            <p className={this.props.className}>{this.props.product} {this.props.price}</p>
-        )
-    }
+const ProductRow = (props) => {
+    return (
+        <div>
+            <p className={props.className}>{props.product}</p>
+            <p className={props.className}>{props.price}</p>
+        </div>
+    )
 }
 
 ReactDOM.render(

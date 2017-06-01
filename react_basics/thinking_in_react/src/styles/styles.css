@@ -2,6 +2,13 @@
     //outline: 1px solid red;
 }
 
+p,h3 {
+    width: 100px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    display: inline-block;
+}
+
 .in-stock {
     color: green;
 }
