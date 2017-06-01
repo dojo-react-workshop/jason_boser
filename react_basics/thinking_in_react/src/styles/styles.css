@@ -1,0 +1,11 @@
+*{
+    //outline: 1px solid red;
+}
+
+.in-stock {
+    color: green;
+}
+
+.out-of-stock {
+    color: red;
+}
