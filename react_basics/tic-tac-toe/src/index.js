@@ -11,33 +11,28 @@ class Game extends React.Component {
 
         this.state = {
             boardValues:["","","","","","","","",""],
-            playerTurn:1
+            playerTurn:1,
+            gameStatus:'keep playing'
         }
     }
 
     updateGameboard = (index) => {
         const newValues = Array.from(this.state.boardValues);
         
-        if(newValues[index]!=""){
+        if(newValues[index]!="" || this.state.gameStatus!='keep playing'){
             return;
         }
 
         newValues[index] = this.state.playerTurn===1? 'X':'O';
-        
-        this.setState({
-            boardValues:newValues
-        })
 
         let status = this.checkGameStatus(newValues);
-        if(status==='winner'){
-            alert(`Player ${this.state.playerTurn} wins!!!`);
-        }else if(status==='keep playing'){
-            this.setState({
-                playerTurn:(this.state.playerTurn===1? 2:1)
-            })
-        }else{
-            alert(`Game over!!!`);
-        }
+        let nextPlayer = status==='keep playing'? ((this.state.playerTurn === 1)? 2:1) : this.state.playerTurn;
+
+        this.setState({
+            boardValues:newValues,
+            playerTurn:nextPlayer,
+            gameStatus:status
+        })
     }
 
     checkGameStatus = (values) => {
@@ -79,14 +74,42 @@ class Game extends React.Component {
         return 'game over'
     }
 
+    resetGame = () => {
+        this.setState({
+            boardValues:["","","","","","","","",""],
+            playerTurn:1,
+            gameStatus:'keep playing'
+        })
+    }
+
     render(){
-        return(
-            <div id='game'>
-                <h1>Tic-Tac-Toe</h1>
-                <h3>Player {this.state.playerTurn}, please choose a square.</h3>
-                <Board boardValues={this.state.boardValues} update={this.updateGameboard}/>
-            </div>
-        )
+        if(this.state.gameStatus === 'game over'){
+            return(
+                <div id='game'>
+                    <h1>Tic-Tac-Toe</h1>
+                    <h3>Tie game. Please play again.</h3>
+                    <button onClick={this.resetGame}>Restart</button>
+                    <Board boardValues={this.state.boardValues} update={this.updateGameboard}/>
+                </div>
+            )
+        }else if(this.state.gameStatus === 'winner'){
+            return(
+                <div id='game'>
+                    <h1>Tic-Tac-Toe</h1>
+                    <h3>Player {this.state.playerTurn} wins the game!!!</h3>
+                    <button onClick={this.resetGame}>Restart</button>
+                    <Board boardValues={this.state.boardValues} update={this.updateGameboard}/>
+                </div>
+            )
+        }else{
+            return(
+                <div id='game'>
+                    <h1>Tic-Tac-Toe</h1>
+                    <h3>Player {this.state.playerTurn}, please choose a square.</h3>
+                    <Board boardValues={this.state.boardValues} update={this.updateGameboard}/>
+                </div>
+            )
+        }
     }
 }
 

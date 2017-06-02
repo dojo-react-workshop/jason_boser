@@ -24,3 +24,15 @@
     vertical-align: top;
     background-color: white;
 }
+
+h3 {
+    display: inline-block;
+    vertical-align: top;
+}
+
+button {
+    display: inline-block;
+    vertical-align: top;
+    margin-left: 20px;
+    margin-top: 15px;
+}
