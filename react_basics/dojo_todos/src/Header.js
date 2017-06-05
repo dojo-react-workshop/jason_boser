@@ -4,9 +4,11 @@ import React from 'react';
 
 const Header = (props) => {
 
-    const handleKeyUp = (e) => {
-        if (e.key === 'Enter') {
+    const updateText = (e) => {
+        if (e.keyCode === 13) {
             props.addItem(e.target.value);
+        }else{
+            props.updateDisplayText(e.target.value);
         }
     }
 
@@ -16,7 +18,9 @@ const Header = (props) => {
             <input 
                 type='text' 
                 placeholder='What needs to be done?' 
-                onKeyUp={handleKeyUp}
+                value={props.displayText}
+                onKeyDown={updateText}
+                onChange={updateText}
              />
         </div>
     )

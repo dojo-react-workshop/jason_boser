@@ -16,7 +16,8 @@ class App extends React.Component {
 
         this.state = {
             todos:props.todos,
-            filterState:'All'
+            filterState:'All',
+            displayText:''
         }
     }
 
@@ -28,7 +29,14 @@ class App extends React.Component {
         })
 
         this.setState({
-            todos:updatedTodos
+            todos:updatedTodos,
+            displayText:''
+        })
+    }
+
+    updateDisplayText = (text) => {
+        this.setState({
+            displayText:text
         })
     }
 
@@ -115,6 +123,8 @@ class App extends React.Component {
                 <h1>todos</h1>
                 <Header 
                     addItem={this.addItem} 
+                    updateDisplayText={this.updateDisplayText}
+                    displayText={this.state.displayText}
                     selectAll={this.selectAll}
                 /> 
                 <List 
