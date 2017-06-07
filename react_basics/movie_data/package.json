@@ -1,11 +1,10 @@
 {
-  "name": "validated_form",
+  "name": "movie_data",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
     "react": "^15.5.4",
-    "react-dom": "^15.5.4",
-    "validator": "^7.0.0"
+    "react-dom": "^15.5.4"
   },
   "devDependencies": {
     "react-scripts": "1.0.7"

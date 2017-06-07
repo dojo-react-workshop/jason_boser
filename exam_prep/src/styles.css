@@ -1,0 +1,24 @@
+* {
+    // outline: 1px solid red;
+}
+
+#app {
+    width: 400px;
+    margin-left: 100px;
+    outline: 1px solid red;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    text-align: center;
+}
+
+form,#userlist,#repolist {
+    width: 260px;
+    margin-left: 48px;
+    padding: 20px;
+    border: 1px solid black;
+    text-align: left;
+}
+
+input[type='submit'] {
+    margin-left: 20px;
+}

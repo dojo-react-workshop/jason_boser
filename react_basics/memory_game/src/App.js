@@ -106,15 +106,19 @@ class App extends React.Component {
         let selectInterval = setInterval(() => {
             if(this.state.timeLeft===0){
                 clearInterval(selectInterval);
-                this.setState({
-                    gameStatus:'game over'
-                })
+                this.endGame();
             }else{
                 this.setState({
                     timeLeft:this.state.timeLeft - 1
                 })
             }
         },1000);
+    }
+
+    endGame = () => {
+        this.setState({
+            gameStatus:'game over'
+        })
     }
 
     createPattern = () => {

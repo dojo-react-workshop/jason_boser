@@ -5,12 +5,13 @@ import React from 'react';
 const Tile = (props) => {
 
     if(props.gameStatus === 'new game' || props.gameStatus === 'prepare'){
-        return (
-            <div 
-                className='tile unselected'
-            />
-        )
-    }else{// if(props.gameStatus === 'memorize'props.gameStatus === 'game over'){
+        return (<div className='tile unselected' />)
+    }else if(props.gameStatus === 'selecting'){
+        if(props.tileStatus === 'selected')
+            return (<div className='tile selected' />)
+        else
+            return (<div className='tile unselected' />)
+    }else{// if(props.gameStatus === 'memorize' props.gameStatus === 'game over'){
 
         if(props.tileStatus === 'selected' && props.inSolution){
             return (

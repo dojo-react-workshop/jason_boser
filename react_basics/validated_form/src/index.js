@@ -1,8 +1,12 @@
+'use strict'
+
 import React from 'react';
 import ReactDOM from 'react-dom';
-import App from './App';
-import registerServiceWorker from './registerServiceWorker';
-import './index.css';
+import './styles.css';
+import ValidatedForm from './ValidatedForm';
 
-ReactDOM.render(<App />, document.getElementById('root'));
-registerServiceWorker();
+
+ReactDOM.render(
+    <ValidatedForm />,
+    document.getElementById('root')
+)

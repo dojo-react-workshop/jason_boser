@@ -1,0 +1,38 @@
+* {
+    border: 0;
+}
+
+form {
+    width:500px;
+    margin-left: 50px;
+}
+
+input[type='text'], input[type='email'] {
+    width: 200px;
+    border: 1px solid black;
+    margin-bottom: 10px;
+    display:inline-block;
+    vertical-align: top;
+}
+
+input[type='submit'] {
+    width:60px;
+    background-color: white;
+    border: 1px solid black;
+    border-radius: 5px;
+}
+
+.errors {
+    width:250px;
+    margin:0px 0px 0px 10px;
+    display:inline-block;
+    vertical-align: top;
+
+}
+
+p {
+    display:inline-block;
+    vertical-align: top;
+    color: red;
+    margin: 0;
+}

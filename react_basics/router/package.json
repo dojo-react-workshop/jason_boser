@@ -1,14 +1,13 @@
 {
-  "name": "validated_form",
-  "version": "0.1.0",
+  "name": "diy_router",
+  "version": "0.0.1",
   "private": true,
-  "dependencies": {
-    "react": "^15.5.4",
-    "react-dom": "^15.5.4",
-    "validator": "^7.0.0"
-  },
   "devDependencies": {
     "react-scripts": "1.0.7"
+  },
+  "dependencies": {
+    "react": "^15.5.4",
+    "react-dom": "^15.5.4"
   },
   "scripts": {
     "start": "react-scripts start",
