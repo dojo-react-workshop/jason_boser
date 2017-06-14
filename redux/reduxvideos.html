@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Counter</title>
+    <meta charset="utf-8">
+    <script type='text/javascript' src="https://cdnjs.cloudflare.com/ajax/libs/redux/3.4.0/redux.js"></script>
+    <script type='text/javascript' src="https://fb.me/react-dom-0.14.0.js"></script>
+    <script type='text/javascript' src="https://fb.me/react-0.14.0.js"></script>
+</head>
+<body>
+    <div id='root'></div>
+
+    <script type="text/babel">
+        console.log('got here');
+        const counter = (state = 0, action) => {
+            switch(action.type){
+                case 'INCREMENT':
+                    return state + 1;
+                case 'DECREMENT':
+                    return state - 1;
+                default:
+                    return 0;
+            }
+        }
+
+        const Counter = ({
+                value,
+                onIncrement,
+                onDecrement
+            }) => {
+                <div><h1>{value}</h1></div>
+                <button onClick={onIncrement}>+</button>
+                <button onClick={onDecrement}>-</button>
+            };
+
+        // import {createStore} from 'redux'; //if using NPM
+        const {createStore} = Redux;
+        const store = createStore(counter); //counter is the reducer
+
+        const render = () => {
+            ReactDOM.render(
+                <Counter 
+                    value={store.getState()} 
+                    onIncrement={() => {
+                        store.dispatch({type:'INCREMENT'})
+                    }} 
+                    onDecrement={() => {
+                        store.dispatch({type:'DECREMENT'})
+                    }}
+                />,
+                document.getElementById('root')
+            );
+        }
+
+        store.subscribe(render);
+        render();
+
+        document.addEventListener('click', () => {
+            store.dispatch({type:'INCREMENT'});
+        })
+    </script>
+</body>
+
+</html>
